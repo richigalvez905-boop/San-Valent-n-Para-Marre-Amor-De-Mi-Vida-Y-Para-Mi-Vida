@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¿Quieres ser mi San Valentín? 🐱💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 350px;
+    }
+
+    img {
+      width: 250px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <img id="catImage" src="https://placekitten.com/300/250" />
+  <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
+  <button class="yes" onclick="sayYes()">Sí 💖</button>
+  <button class="no" onclick="sayNo()">No 😿</button>
+</div>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  let noCount = 0;
+  const images = [
+    "https://placekitten.com/301/250",
+    "https://placekitten.com/302/250",
+    "https://placekitten.com/303/250",
+    "https://placekitten.com/304/250"
+  ];
+
+  function sayNo() {
+    noCount++;
+    document.getElementById("catImage").src = images[noCount % images.length];
+    document.getElementById("text").innerText = "¿Segura? 😾";
+  }
+
+  function sayYes() {
+    document.getElementById("catImage").src =
+      "https://placekitten.com/305/250";
+    document.getElementById("text").innerText =
+      "Sabía que dirías que sí 🐱💞\nFeliz San Valentín";
+
+    document.getElementById("music").play();
+  }
+</script>
+
+</body>
+</html>
