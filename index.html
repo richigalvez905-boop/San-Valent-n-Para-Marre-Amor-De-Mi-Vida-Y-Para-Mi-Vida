@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quieres ser mi San Valentín? 🐱💘</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 420px;
+    }
+
+    h1 {
+      color: #e63946;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin: 15px 0;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #e63946;
+      color: white;
+    }
+
+    #no {
+      background: #f1f1f1;
+      position: relative;
+    }
+
+    .music {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <h1>¿Quieres ser mi San Valentín? 💖</h1>
+
+  <img id="catImage" src="https://placekitten.com/400/300" alt="gatito">
+
+  <p id="text">Prometo cariño, risas y muchos momentos lindos 🐾</p>
+
+  <button id="yes" onclick="yes()">Sí 💕</button>
+  <button id="no" onmouseover="nope()">No 🙈</button>
+
+  <div class="music">
+    🎵 Música:
+    <button onclick="toggleMusic()">▶ / ⏸</button>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1c2b8e7c6a.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  let noCount = 0;
+
+  const angryCats = [
+    "https://placekitten.com/401/300",
+    "https://placekitten.com/402/300",
+    "https://placekitten.com/403/300",
+    "https://placekitten.com/404/300"
+  ];
+
+  function nope() {
+    noCount++;
+    const btn = document.getElementById("no");
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+
+    const img = document.getElementById("catImage");
+    img.src = angryCats[noCount % angryCats.length];
+
+    document.getElementById("text").innerText =
+      "El gatito ya se está enojando 😾 piensa bien tu respuesta...";
+  }
+
+  function yes() {
+    document.getElementById("card").innerHTML = `
+      <h1>💞 Sabía que dirías que sí 💞</h1>
+      <img src="https://placekitten.com/500/350" alt="gatitos abrazados">
+      <p>
+        Dos gatitos, un abrazo y una historia que apenas comienza 🐱💖<br><br>
+        Gracias por hacer este momento especial.
+      </p>
+    `;
+    document.getElementById("music").play();
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById("music");
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+</script>
+
+</body>
+</html>
