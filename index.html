@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti, Chinita 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      max-width: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff4d6d;
+    }
+
+    img {
+      width: 260px;
+      border-radius: 20px;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ccc;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <h1>Chinita… ¿quieres ser mi San Valentín? 🥺💘</h1>
+
+  <img id="catImg" src="https://i.imgur.com/6bK6wZg.png">
+
+  <div>
+    <button id="yesBtn" onclick="sayYes()">Sí 💖</button>
+    <button id="noBtn" onclick="sayNo()">No 😢</button>
+  </div>
+</div>
+
+<!-- Música (se mantiene igual) -->
+<iframe id="music" width="0" height="0"
+  src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1"
+  allow="autoplay">
+</iframe>
+
+<script>
+  let noCount = 0;
+
+  // 🔥 AQUÍ PONES TUS LINKS DE GATOS 🔥
+  const catImages = [
+    " ", // tierno
+    "https://i.imgur.com/4AiXzf8.png", // confundido
+    "https://i.imgur.com/Z9a9EwG.png", // triste
+    "https://i.imgur.com/2yaf2wb.png", // molesto
+    "https://i.imgur.com/8RKXAIV.png"  // muy enojado
+  ];
+
+  function sayNo() {
+    noCount++;
+
+    const cat = document.getElementById("catImg");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    // Cambiar gato
+    if (noCount < catImages.length) {
+      cat.src = catImages[noCount];
+    }
+
+    // Botón NO huye 😈
+    noBtn.style.top = Math.random() * 250 + "px";
+    noBtn.style.left = Math.random() * 250 + "px";
+
+    // NO se hace más pequeño, SÍ más grande
+    noBtn.style.transform = `scale(${1 - noCount * 0.15})`;
+    yesBtn.style.transform = `scale(${1 + noCount * 0.2})`;
+  }
+
+  function sayYes() {
+    document.getElementById("card").innerHTML = `
+      <h1>Sabía que dirías que sí, Chinita 💞</h1>
+      <img src="https://i.imgur.com/JR5GZQp.png">
+      <p>
+        Dos gatitos, un abrazo…<br>
+        y muchas historias por vivir juntos 🐱🐱💖
+      </p>
+      <iframe width="0" height="0"
+        src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1"
+        allow="autoplay">
+      </iframe>
+    `;
+  }
+</script>
+
+</body>
+</html>
